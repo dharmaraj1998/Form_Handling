@@ -1,10 +1,35 @@
+import { useState } from "react"
+import BookEdit from "./BookEdit"
 
 
-const BookShow =({book})=>{
+const BookShow =({book,deleteBook,editBook})=>{
+    const [editTitle,setEditTitle] = useState(false)
+
+    const handleClick = ()=>{
+        deleteBook(book.id)
+    }
+    const handleEditClick = ()=>{
+        setEditTitle(!editTitle)
+    }
+    const handleSubmit = (id,title)=>{
+        setEditTitle(false)
+        editBook(id,title)
+    }
+
+    let titleContent = <h3>{book.title}</h3>
+    if(editTitle){
+       titleContent = <BookEdit book= {book} onSubmit = {handleSubmit}/>
+    }
     return (
         <div className="book-show">
-            <h1>Title : {book.title}</h1>
+            <h1>{titleContent}</h1>
             <p>Id : {book.id}</p>
+            <div className="actions">
+                <button className="edit" onClick={handleEditClick}>Edit</button>
+                <button className="delete" onClick={handleClick}>
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }
