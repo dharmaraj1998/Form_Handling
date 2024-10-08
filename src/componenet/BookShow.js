@@ -1,9 +1,10 @@
 
 
-const BookShow =()=>{
+const BookShow =({book})=>{
     return (
-        <div>
-            <h1>Book Show</h1>
+        <div className="book-show">
+            <h1>Title : {book.title}</h1>
+            <p>Id : {book.id}</p>
         </div>
     )
 }

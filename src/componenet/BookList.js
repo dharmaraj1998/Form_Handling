@@ -1,7 +1,14 @@
-const BookList =()=>{
+import BookShow from './BookShow'
+
+const BookList =({books})=>{
+
+    const listBooks = books.map((book)=>{
+        return <BookShow  book ={book} />
+    })
     return (
-        <div>
-            <h1>Book List</h1>
+        <div className='book-list'>
+            {listBooks}
+           
         </div>
     )
 }

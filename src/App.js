@@ -1,17 +1,21 @@
 import "./index.css"
 import { useState } from "react";
 import BookCreate from "./componenet/BookCreate";
+import BookList from "./componenet/BookList";
 
 function App(){
     const [book,setBook] = useState([]);
 
-    const createBook = (book)=>{
-        setBook(book)
+    const createBook = (title)=>{
+        const updateBooks = [...book,{id : Math.random()*9999, title}]
+        setBook(updateBooks)
+       
+        
     }
 
     return(
         <div>
-            <h1>{book}</h1>
+            <BookList books = {book}/>
             <BookCreate createBook = {createBook}/>
             
         </div>
