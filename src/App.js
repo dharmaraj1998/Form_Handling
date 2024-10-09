@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import BookCreate from "./componenet/BookCreate";
 import BookList from "./componenet/BookList";
 import axios from "axios"
+import { useContext } from "react";
+import BooksContext from "./provider/Books";
 
 
 
 function App(){
+    const sharedData = useContext(BooksContext)
     const [book,setBook] = useState([]);
 
     const fetchList = async ()=>{
@@ -31,9 +34,7 @@ function App(){
         setBook(updateBooks)   
     }
     const deleteBooks =async(id)=>{
-        const response = await axios.delete(`http://localhost:3001/books/${id}`)
-        setBook(response.data)
-        console.log(response);
+         await axios.delete(`http://localhost:3001/books/${id}`);
         
         const updateBooks = book.filter(book=> book.id !== id)
         setBook(updateBooks)
@@ -59,6 +60,12 @@ function App(){
 
     return(
         <div>
+            <h1>
+                {sharedData.count}
+            
+            </h1>
+            <button onClick={sharedData.increment}>button</button>
+            <button onClick={sharedData.increment}>increment</button>
             <BookList books = {book} deleteBook ={deleteBooks} editBook = {editBooks}/>
             <BookCreate createBook = {createBook}/>
             

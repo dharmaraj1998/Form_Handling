@@ -1,24 +1,3 @@
 {
-  "books": [
-    {
-      "id": "e576",
-      "title": "dharma"
-    },
-    {
-      "id": "4c6b",
-      "title": "sujit"
-    },
-    {
-      "id": "0cc4",
-      "title": "narayana"
-    },
-    {
-      "id": "6b8d",
-      "title": "krishna"
-    },
-    {
-      "id": "8130",
-      "title": "muruga"
-    }
-  ]
+  "books": []
 }
