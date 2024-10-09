@@ -1,19 +1,21 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import BookEdit from "./BookEdit"
+import BooksContext from "../provider/Books"
 
 
-const BookShow =({book,deleteBook,editBook})=>{
+const BookShow =({book})=>{
     const [editTitle,setEditTitle] = useState(false)
+    const {deleteBooks,editBooks} = useContext(BooksContext)
 
     const handleClick = ()=>{
-        deleteBook(book.id)
+        deleteBooks(book.id)
     }
     const handleEditClick = ()=>{
         setEditTitle(!editTitle)
     }
     const handleSubmit = (id,title)=>{
         setEditTitle(false)
-        editBook(id,title)
+        editBooks(id,title)
     }
 
     let titleContent = <h3>{book.title}</h3>

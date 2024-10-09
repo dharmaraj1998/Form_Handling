@@ -1,9 +1,12 @@
+import { useContext } from 'react'
 import BookShow from './BookShow'
+import BooksContext from '../provider/Books'
 
-const BookList =({books ,deleteBook,editBook })=>{
+const BookList =()=>{
+    const {book}= useContext(BooksContext)
 
-    const listBooks = books.map((book)=>{
-        return <BookShow  book ={book} deleteBook ={deleteBook} editBook = {editBook} />
+    const listBooks = book.map((book)=>{
+        return <BookShow  book ={book}/>
     })
     return (
         <div className='book-list'>

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import BooksContext from "../provider/Books";
 
-const BookCreate =({ createBook})=>{
+const BookCreate =()=>{
     const [title,setTitle] = useState("")
+    const {createBook} = useContext(BooksContext)
 
     const handleClick = (e)=>{
        setTitle(e.target.value);
