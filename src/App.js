@@ -12,7 +12,7 @@ function App(){
 
     useEffect(()=>{
         fetchList()
-    },[])
+    },[fetchList])
     
 
     return(
